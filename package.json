@@ -12,6 +12,10 @@
   ],
   "author": "Taras Danyliuk",
   "license": "ISC",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/coaxsoft/eslint-config-fe-react.git"
+  },
   "peerDependencies": {
     "eslint": ">= 3"
   },
