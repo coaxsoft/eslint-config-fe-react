@@ -1,26 +1,63 @@
 {
-  "name": "@coax/eslint-config-fe-react",
-  "version": "1.0.0",
-  "description": "COAX Software eslint config for React.js devs",
+  "name": "@coaxsoft/eslint-config-fe-react",
+  "version": "2.0.0",
+  "description": "COAX Software shared ESLint flat config for React.js and TypeScript projects",
+  "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./base": "./base.js",
+    "./typescript": "./typescript.js",
+    "./next": "./next.js"
+  },
+  "files": [
+    "index.js",
+    "base.js",
+    "typescript.js",
+    "next.js",
+    "README.md"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "test": "node --test \"test/**/*.test.js\""
   },
   "keywords": [
     "eslint",
-    "eslintconfig"
+    "eslintconfig",
+    "eslint-config",
+    "react",
+    "typescript",
+    "next"
   ],
-  "author": "Taras Danyliuk",
   "license": "ISC",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/coaxsoft/eslint-config-fe-react.git"
+    "type": "git",
+    "url": "https://github.com/coaxsoft/eslint-config-fe-react.git"
+  },
+  "engines": {
+    "node": ">=22.0.0"
   },
   "peerDependencies": {
-    "eslint": ">= 3"
+    "eslint": "^10.3.0",
+    "typescript": ">=5.0.0 <6.1.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   },
   "dependencies": {
-    "babel-eslint": ">=10.0.3",
-    "eslint-plugin-react": ">=7.14.3"
+    "@eslint-react/eslint-plugin": "^5.15.0",
+    "@eslint/js": "^10.0.1",
+    "@next/eslint-plugin-next": "^16.2.10",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
+    "globals": "^16.4.0",
+    "typescript-eslint": "^8.64.0"
+  },
+  "devDependencies": {
+    "eslint": "^10.7.0",
+    "typescript": "^5.9.3"
   }
 }
