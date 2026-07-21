@@ -1,5 +1,5 @@
 {
-  "name": "@coax/eslint-config-fe-react",
+  "name": "@coaxsoft/eslint-config-fe-react",
   "version": "1.0.0",
   "description": "COAX Software eslint config for React.js devs",
   "main": "index.js",
@@ -10,7 +10,6 @@
     "eslint",
     "eslintconfig"
   ],
-  "author": "Taras Danyliuk",
   "license": "ISC",
   "repository": {
     "type" : "git",
