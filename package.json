@@ -1,25 +1,44 @@
 {
   "name": "@coaxsoft/eslint-config-fe-react",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "COAX Software shared ESLint flat config for React.js and TypeScript projects",
   "type": "module",
   "main": "index.js",
+  "types": "./index.d.ts",
   "exports": {
-    ".": "./index.js",
-    "./base": "./base.js",
-    "./typescript": "./typescript.js",
-    "./next": "./next.js"
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./base": {
+      "types": "./base.d.ts",
+      "default": "./base.js"
+    },
+    "./typescript": {
+      "types": "./typescript.d.ts",
+      "default": "./typescript.js"
+    },
+    "./next": {
+      "types": "./next.d.ts",
+      "default": "./next.js"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "index.js",
+    "index.d.ts",
     "base.js",
+    "base.d.ts",
     "typescript.js",
+    "typescript.d.ts",
     "next.js",
+    "next.d.ts",
     "README.md"
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "node --test \"test/**/*.test.js\""
+    "test": "node --test \"test/**/*.test.js\"",
+    "prepublishOnly": "npm run lint && npm test"
   },
   "keywords": [
     "eslint",
@@ -32,16 +51,23 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/coaxsoft/eslint-config-fe-react.git"
+    "url": "git+https://github.com/coaxsoft/eslint-config-fe-react.git"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": "^22.13.0 || >=24"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
+    "@next/eslint-plugin-next": "^16.2.10",
     "eslint": "^10.3.0",
     "typescript": ">=5.0.0 <6.1.0"
   },
   "peerDependenciesMeta": {
+    "@next/eslint-plugin-next": {
+      "optional": true
+    },
     "typescript": {
       "optional": true
     }
@@ -49,15 +75,15 @@
   "dependencies": {
     "@eslint-react/eslint-plugin": "^5.15.0",
     "@eslint/js": "^10.0.1",
-    "@next/eslint-plugin-next": "^16.2.10",
     "@stylistic/eslint-plugin": "^5.10.0",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-simple-import-sort": "^13.0.0",
-    "globals": "^16.4.0",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
+    "globals": "^17.13.0",
     "typescript-eslint": "^8.64.0"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^16.2.10",
     "eslint": "^10.7.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   }
 }

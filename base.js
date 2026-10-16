@@ -13,13 +13,49 @@ const base = [
       sourceType: 'module',
       globals: {
         ...globals.browser,
-        ...globals.node,
-        ...globals.jest,
       },
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
         },
+      },
+    },
+  },
+  {
+    name: '@coaxsoft/eslint-config-fe-react/base/node-files',
+    files: [
+      '**/*.config.{js,mjs,cjs,ts,mts,cts}',
+      '**/scripts/**/*.{js,mjs,cjs,ts,mts,cts}',
+    ],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
+    name: '@coaxsoft/eslint-config-fe-react/base/test-files',
+    files: [
+      '**/*.{test,spec}.{js,jsx,mjs,cjs,ts,tsx,mts,cts}',
+      '**/__tests__/**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}',
+      '**/__mocks__/**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}',
+      '**/{setupTests,jest.setup,vitest.setup}.{js,jsx,mjs,cjs,ts,tsx,mts,cts}',
+    ],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+        ...globals.vitest,
+      },
+    },
+  },
+  {
+    name: '@coaxsoft/eslint-config-fe-react/base/commonjs-files',
+    files: ['**/*.cjs'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: {
+        ...globals.node,
       },
     },
   },
@@ -49,7 +85,6 @@ const base = [
       'eqeqeq': 'error',
       'for-direction': 'error',
       'guard-for-in': 'warn',
-      'id-denylist': 'error',
       'init-declarations': 'warn',
       'max-depth': ['error', 4],
       'max-nested-callbacks': ['error', 4],
@@ -57,8 +92,7 @@ const base = [
       'no-array-constructor': 'error',
       'no-await-in-loop': 'warn',
       'no-caller': 'error',
-      'no-catch-shadow': 'error',
-      'no-duplicate-imports': 'error',
+      'no-duplicate-imports': ['error', { allowSeparateTypeImports: true }],
       'no-else-return': 'warn',
       'no-empty-function': 'warn',
       'no-eq-null': 'error',
@@ -74,18 +108,12 @@ const base = [
       'no-global-assign': 'error',
       'no-proto': 'error',
       'no-prototype-builtins': 'off',
-      'no-restricted-globals': 'error',
-      'no-restricted-imports': 'error',
-      'no-restricted-properties': 'error',
-      'no-restricted-syntax': 'error',
-      'no-return-await': 'warn',
       'no-self-compare': 'error',
       'no-sequences': 'error',
       'no-shadow': 'error',
       'no-shadow-restricted-names': 'error',
       'no-template-curly-in-string': 'error',
       'no-undef-init': 'warn',
-      'no-undefined': 'warn',
       'no-unmodified-loop-condition': 'error',
       'no-unneeded-ternary': 'error',
       'no-use-before-define': [
@@ -240,6 +268,16 @@ const base = [
     ...eslintReact.configs['disable-conflict-eslint-plugin-react-hooks'],
     name: '@coaxsoft/eslint-config-fe-react/base/react-hooks-conflicts',
     files: ['**/*.{js,jsx,ts,tsx}'],
+  },
+  {
+    // The conflict preset turns these off, but `@eslint-react` enables its own versions only in its `all` preset.
+    name: '@coaxsoft/eslint-config-fe-react/base/react-hooks-compiler',
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    rules: {
+      'react-hooks/globals': 'error',
+      'react-hooks/immutability': 'error',
+      'react-hooks/refs': 'error',
+    },
   },
 ];
 

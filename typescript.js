@@ -21,6 +21,13 @@ const typescript = [
       ],
     },
   },
+  {
+    name: '@coaxsoft/eslint-config-fe-react/typescript/commonjs-files',
+    files: ['**/*.cjs'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
 ];
 
 export default typescript;
